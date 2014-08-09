@@ -44,6 +44,6 @@
 })(window);
 
 document.addEventListener('DOMContentLoaded', function () {
-    var images = ['img/okabe.jpg', 'img/kurisu.jpg', 'img/kokuban.jpg'];
+    var images = ['https://cdn.rawgit.com/o2project/sg-tokusetsu/master/img/okabe.jpg', 'https://cdn.rawgit.com/o2project/sg-tokusetsu/master/img/kurisu.jpg', 'https://cdn.rawgit.com/o2project/sg-tokusetsu/master/img/kokuban.jpg'];
     var transparentImages = new CreateTransparentImages(images);
 });
