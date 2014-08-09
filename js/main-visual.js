@@ -18,8 +18,8 @@
         var maskImage = document.createElement('img');
         maskImage.src = maskImageName;
 
-        targetImage.onload = this.translateImage(targetImage, maskImage);
-        maskImage.onload = this.translateImage(targetImage, maskImage);
+        targetImage.onload = function () { this.translateImage(targetImage, maskImage) };
+        maskImage.onload = function () { this.translateImage(targetImage, maskImage) };
     };
 
     CreateTransparentImages.prototype.translateImage = function (targetImage, maskImage) {
