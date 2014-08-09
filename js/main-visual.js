@@ -44,6 +44,6 @@
 })(window);
 
 document.addEventListener('DOMContentLoaded', function () {
-    var images = ['https://cdn.rawgit.com/o2project/sg-tokusetsu/master/img/okabe.jpg', 'https://cdn.rawgit.com/o2project/sg-tokusetsu/master/img/kurisu.jpg', 'https://cdn.rawgit.com/o2project/sg-tokusetsu/master/img/kokuban.jpg'];
+    var images = ['//cdn.rawgit.com/o2project/sg-tokusetsu/master/img/okabe.jpg', '//cdn.rawgit.com/o2project/sg-tokusetsu/master/img/kurisu.jpg', '//cdn.rawgit.com/o2project/sg-tokusetsu/master/img/kokuban.jpg'];
     var transparentImages = new CreateTransparentImages(images);
 });
