@@ -1,0 +1,35 @@
+.main-visual {
+    position: relative;
+    overflow: hidden;
+    width: 1240px;
+}
+
+.main-visual-01,
+.main-visual-02,
+.main-visual-03 {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.main-visual-01 {
+    z-index: 1;
+}
+
+.main-visual-02 {
+    z-index: 2;
+    margin-left: 1240px;
+    -webkit-transition: all 0.5s ease-out 0.9s;
+    transition: all 0.5s ease-out 0.9s;
+}
+
+.main-visual-03 {
+    z-index: 3;
+    margin-left: -50px;
+    -webkit-transition: all 0.5s ease-out 0.9s;
+    transition: all 0.5s ease-out 0.9s;
+}
+
+.main-image-load-complete .main-visual canvas {
+    margin-left: 0;
+}

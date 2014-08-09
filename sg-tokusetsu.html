@@ -5,8 +5,11 @@
     <title>{block:PostTitle}{PostTitle} - {/block:PostTitle}{Title}{block:IndexPage} - {text:CircleName}{/block:IndexPage}</title>
 
     <!-- テーマの設定項目ここから -->
-    <meta name="image:MainVisual" content="">
     <meta name="image:Cover" content="">
+
+    <meta name="text:MainVisualPath1" content="">
+    <meta name="text:MainVisualPath2" content="">
+    <meta name="text:MainVisualPath3" content="">
 
     <meta name="text:Tagline" content="">
     <meta name="text:IntroductionText" content="">
@@ -30,6 +33,7 @@
     <meta name="viewport" content="width=device-width">
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
 
     <script src="js/main-visual.js"></script>
 </head>
@@ -53,12 +57,18 @@
 </header>
 
 <main role="main">
-    {block:IfMainVisualImage}
+    {block:IfMainVisualPath1}
     <!-- 頒布物を象徴するようなメイン画像 -->
     <div class="main-visual">
-        <img alt="{Title} メインビジュアル" src="{image:MainVisual}">
+        <img alt="{Title} メインビジュアル1" src="{text:MainVisualPath1}">
+        {block:IfMainVisualPath2}
+        <img alt="{Title} メインビジュアル2" src="{text:MainVisualPath2}">
+        {/block:IfMainVisualPath2}
+        {block:IfMainVisualPath3}
+        <img alt="{Title} メインビジュアル3" src="{text:MainVisualPath3}">
+        {/block:IfMainVisualPath3}
     </div>
-    {/block:IfMainVisualImage}
+    {/block:IfMainVisualPath1}
 
     {block:IfTagline}
     <!-- 今北一業 -->

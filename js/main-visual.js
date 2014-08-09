@@ -1,35 +1,47 @@
 (function (exports) {
     'use strict';
 
-    function CreateTransparentImages(targetTransparentImagePaths, maskImagesSuffix) {
-        var that = this;
-        var suffix = maskImagesSuffix || 'mask';
-
-        targetTransparentImagePaths.forEach(function (imagePath, i) {
-            var maskImagePath = imagePath.replace(/\.jpg/, '-' + suffix + '.png');
-            that.onLoadImage(imagePath, maskImagePath);
-        });
+    function TransparentImages(imgsLength) {
+        this.imgsLength = imgsLength;
     }
 
-    CreateTransparentImages.prototype.onLoadImage = function (targetImageName, maskImageName) {
+    TransparentImages.prototype.createTranslateImage = function (baseImage, maskImagePath, appendTarget, index, onLoad)  {
         var that = this;
+        var i = index || -1;
+        var image = document.createElement('img'),
+            maskImage = document.createElement('img');
+        var count = 0;
+        var imgsLength = that.imgsLength;
 
-        var targetImage = document.createElement('img');
-        targetImage.src = targetImageName;
+        baseImage.style.display = 'none';
 
-        var maskImage = document.createElement('img');
-        maskImage.src = maskImageName;
+        function fireAfterImgLoad() {
+            if (++count < imgsLength - 1) {
+                return;
+            }
+            var loadResultElement = onLoad.bind(that, image, maskImage, (i + 1));
+            appendTarget.appendChild(loadResultElement());
 
-        targetImage.onload = function () { that.translateImage(targetImage, maskImage) };
-        maskImage.onload = function () { that.translateImage(targetImage, maskImage) };
+            if (--that.imgsLength === 0) {
+                document.body.className = 'main-image-load-complete';
+            }
+        }
+
+        image.onload = fireAfterImgLoad;
+        maskImage.onload = fireAfterImgLoad;
+
+        image.src = baseImage.src;
+        maskImage.src = maskImagePath;
     };
 
-    CreateTransparentImages.prototype.translateImage = function (targetImage, maskImage) {
+    TransparentImages.prototype.translateCanvas = function (targetImage, maskImage, index) {
         var canvas = document.createElement('canvas'),
-            ctx = canvas.getContext('2d');
+            ctx = canvas.getContext('2d'),
+            i = index || -1;
 
         canvas.width = targetImage.naturalWidth;
         canvas.height = targetImage.naturalHeight;
+        i !== -1 ? canvas.className = 'main-visual-0' + index : '';
 
         ctx.drawImage(targetImage, 0, 0);
         ctx.globalCompositeOperation = 'xor';
@@ -38,14 +50,25 @@
         return canvas;
     };
 
-    CreateTransparentImages.prototype.appendCanvas = function (targetElement, canvas) {
-        document.querySelector(targetElement).querySelector(canvas);
-    };
-
-    exports.CreateTransparentImages = CreateTransparentImages;
+    exports.TransparentImages = TransparentImages;
 })(window);
 
 document.addEventListener('DOMContentLoaded', function () {
-    var images = ['//cdn.rawgit.com/o2project/sg-tokusetsu/master/img/okabe.jpg', '//cdn.rawgit.com/o2project/sg-tokusetsu/master/img/kurisu.jpg', '//cdn.rawgit.com/o2project/sg-tokusetsu/master/img/kokuban.jpg'];
-    var transparentImages = new CreateTransparentImages(images);
+    var appendTarget = document.querySelector('.main-visual'),
+        suffix = '-mask';
+    var imgs = appendTarget.getElementsByTagName('img');
+    var transparentImages = new TransparentImages(imgs.length);
+
+    [].forEach.call(imgs, function (img, index) {
+        var maskImage = img.src.replace(/\.jpg$/, suffix + '.png');
+
+        transparentImages.createTranslateImage(
+            img,
+            maskImage,
+            appendTarget,
+            index,
+            transparentImages.translateCanvas
+        );
+    });
+
 });
