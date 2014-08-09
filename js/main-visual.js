@@ -12,14 +12,16 @@
     }
 
     CreateTransparentImages.prototype.onLoadImage = function (targetImageName, maskImageName) {
+        var that = this;
+
         var targetImage = document.createElement('img');
         targetImage.src = targetImageName;
 
         var maskImage = document.createElement('img');
         maskImage.src = maskImageName;
 
-        targetImage.onload = function () { this.translateImage(targetImage, maskImage) };
-        maskImage.onload = function () { this.translateImage(targetImage, maskImage) };
+        targetImage.onload = function () { that.translateImage(targetImage, maskImage) };
+        maskImage.onload = function () { that.translateImage(targetImage, maskImage) };
     };
 
     CreateTransparentImages.prototype.translateImage = function (targetImage, maskImage) {
