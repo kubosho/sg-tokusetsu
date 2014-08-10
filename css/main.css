@@ -81,14 +81,17 @@ section {
   text-align: center; }
 
 .booth {
-  overflow: hidden;
-  margin-bottom: 80px; }
+  margin-bottom: 80px;
+  border: dotted white;
+  border-width: 1px 0;
+  font-size: 1.625rem;
+  text-align: center; }
   .booth dt {
-    float: left; }
+    display: inline-block; }
   .booth dd {
-    margin-bottom: 10px;
-    border-bottom: 1px dotted white;
-    text-align: right; }
+    display: inline-block;
+    margin-bottom: 0;
+    padding: 20px 0; }
 
 .subheader {
   margin: 0 0 20px;
