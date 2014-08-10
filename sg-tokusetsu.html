@@ -5,6 +5,8 @@
     <title>{block:PostTitle}{PostTitle} - {/block:PostTitle}{Title}{block:IndexPage} - {text:CircleName}{/block:IndexPage}</title>
 
     <!-- テーマの設定項目ここから -->
+    <meta name="text:TitleImgPath" content="">
+    <meta name="text:CopyrightImgPath" content="">
     <meta name="image:Cover" content="">
 
     <meta name="text:MainVisualPath1" content="">
@@ -18,6 +20,7 @@
     <meta name="text:IllustratorName" content="">
     <meta name="text:IllustratorUrl" content="">
     <meta name="text:Spec" content="">
+    <meta name="text:EventName" content="">
     <meta name="text:DateYear" content="">
     <meta name="text:DateMonthAndDay" content="">
     <meta name="text:Booth" content="">
@@ -33,9 +36,10 @@
     <meta name="viewport" content="width=device-width">
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="//cdn.rawgit.com/o2project/sg-tokusetsu/ecb15c414adfcb6f3ae06efeab9ffc3faba294e6/css/external/foundation.min.css">
+    <link rel="stylesheet" href="//cdn.rawgit.com/o2project/sg-tokusetsu/ecb15c414adfcb6f3ae06efeab9ffc3faba294e6/css/main.css">
 
-    <script src="js/main-visual.js"></script>
+    <script src="//cdn.rawgit.com/o2project/sg-tokusetsu/c5bc17bedab402d9595668c6bc8d9f50f5eaa447/js/main-visual.js"></script>
 </head>
 
 <body>
@@ -53,7 +57,7 @@
 
 <!-- サイト全体のタイトル -->
 <header role="banner">
-    <h1>{Title}</h1>
+    <h1><img alt="{Title}" src="{text:TitleImgPath}"></h1>
 </header>
 
 <main role="main">
@@ -70,122 +74,146 @@
     </div>
     {/block:IfMainVisualPath1}
 
-    {block:IfTagline}
-    <!-- 今北一業 -->
-    <h2 role="heading" class="tagline">{text:Tagline}</h2>
-    {/block:IfTagline}
+    <div class="container">
+        <div class="row">
+            <div class="columns large-12">
+                <section class="promo-word">
+                    {block:IfTagline}
+                    <!-- 今北一業 -->
+                    <h1 role="heading" class="tagline">{text:Tagline}</h1>
+                    {/block:IfTagline}
 
-    {block:IfIntroductionText}
-    <!-- 頒布物を分かりやすく説明するのだ -->
-    <p class="introduction">
-        {text:IntroductionText}
-    </p>
-    {/block:IfIntroductionText}
+                    {block:IfIntroductionText}
+                    <!-- 頒布物を分かりやすく説明するのだ -->
+                    <p class="introduction">
+                        {text:IntroductionText}
+                    </p>
+                    {/block:IfIntroductionText}
+                </section>
 
-    <!-- 頒布物について知ってもらうためのいろいろな情報 -->
-    <section>
-        <h1 role="heading">頒布物詳細</h1>
-        {block:IfCoverImage}
-        <img alt="表紙" src="{image:Cover}">
-        {/block:IfCoverImage}
-        <dl>
-            <dt>タイトル</dt>
-            <dd>{Title}</dd>
-            <dt>サークル</dt>
-            <dd>
-                {block:IfCircleUrl}<a href="{text:CircleUrl}">{/block:IfCircleUrl}{text:CircleName}{block:IfCircleUrl}</a>{/block:IfCircleUrl}
-            </dd>
-            {block:IfIllustratorName}
-            <dt>イラストレーター</dt>
-            <dd>
-                {block:IfIllustratorUrl}<a href="{text:IllustratorUrl}">{/block:IfIllustratorUrl}{text:IllustratorName}{block:IfIllustratorUrl}</a>{/block:IfIllustratorUrl}</dd>
-            </dd>
-            {/block:IfIllustratorName}
-            <dt>形態</dt>
-            <dd>{text:Spec}</dd>
-            <dt>頒布日</dt>
-            <dd>{text:DateYear}/{text:DateMonthAndDay}</dd>
-            <dt>頒布場所</dt>
-            <dd>{text:Booth}</dd>
-            <dt>価格</dt>
-            <dd>{text:Price}</dd>
-        </dl>
-    </section>
+                <!-- どこで頒布するかを分かりやすく -->
+                <dl class="booth">
+                    <dt>頒布場所</dt>
+                    <dd>{text:EventName} ({text:DateYear}/{text:DateMonthAndDay}) {text:Booth}</dd>
+                </dl>
 
-    <!-- 頒布物のもくじ: ここは気合で書く -->
-    <section>
-        <h1 role="heading">もくじ</h1>
-        <ol class="toc">
-            <li>
-                はじめに
-                <ol class="toc">
-                    <li>謝辞</li>
-                    <li>本書の構成</li>
-                </ol>
-            </li>
-            <li>
-                第一章 - バージョン管理とはなにか
-                <ol class="toc">
-                    <li>1.1. もっとも手軽なバージョン管理</li>
-                    <li>1.2. 分散型バージョン管理システム「Git」について</li>
-                </ol>
-            </li>
-            <li>
-                第二章 - なぜGitを使うのか
-                <ol class="toc">
-                    <li>2.1. ネットワーク接続がいらない</li>
-                    <li>2.2. 流行っている</li>
-                    <li>2.3. ローカルリポジトリでいろいろと試せる</li>
-                </ol>
-            </li>
-            <li>
-                第三章 - Gitの使いかた
-                <ol class="toc">
-                    <li>3.1. SourceTreeのインストールと設定</li>
-                    <li>3.2. Gitによるバージョン管理を始める</li>
-                    <li>3.3. すでにあるリモートリポジトリを使ってバージョン管理を始める</li>
-                    <li>3.4. 作業内容を記録する</li>
-                    <li>3.5. 作業内容を無かったことにする</li>
-                    <li>3.6. ブランチの一覧を見たり、ブランチを作ったりする</li>
-                    <li>3.7. ブランチを切りかえる</li>
-                    <li>3.8. 変更をリセットする</li>
-                    <li>3.9. 作業履歴を改変する</li>
-                    <li>3.10. リモートリポジトリに作業内容を送る</li>
-                    <li>3.11. リモートリポジトリの変更内容を自分のPC上のリポジトリに取り込む</li>
-                    <li>3.12. 別のブランチでの作業内容を取り込む</li>
-                </ol>
-            </li>
-            <li>
-                あとがき
-                <ol class="toc">
-                    <li>GitHubとBitbucketについて</li>
-                    <li>GitHubとBitbucket共通の仕組み</li>
-                    <li>参考にした資料</li>
-                </ol>
-            </li>
-        </ol>
-    </section>
+                <!-- 頒布物について知ってもらうためのいろいろな情報 -->
+                <div class="row">
+                    <section class="columns large-6">
+                        <h1 role="heading" class="subheader">頒布物詳細</h1>
 
-    <!-- 面白かったらシェア！…なんて言いませんよ？ -->
-    <ul class="social">
-        {block:IfEnableTweetButton}
-        <li class="social__tweet">
-            <a href="https://twitter.com/share" class="twitter-share-button" data-url="{BlogURL}">Tweet</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-        </li>
-        {/block:IfEnableTweetButton}
-        {block:IfEnableFacebookButton}
-        <li class="social__fb-like">
-            <div class="fb-like" data-url="{BlogURL}" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false"></div>
-        </li>
-        {/block:IfEnableFacebookButton}
-    </ul>
+                        <dl class="details">
+                            <dt>タイトル</dt>
+                            <dd>{Title}</dd>
+                            <dt>サークル</dt>
+                            <dd>
+                                {block:IfCircleUrl}<a href="{text:CircleUrl}">{/block:IfCircleUrl}{text:CircleName}{block:IfCircleUrl}</a>{/block:IfCircleUrl}
+                            </dd>
+                            {block:IfIllustratorName}
+                            <dt>イラストレーター</dt>
+                            <dd>
+                                {block:IfIllustratorUrl}<a href="{text:IllustratorUrl}">{/block:IfIllustratorUrl}{text:IllustratorName}{block:IfIllustratorUrl}</a>{/block:IfIllustratorUrl}</dd>
+                            </dd>
+                            {/block:IfIllustratorName}
+                            <dt>形態</dt>
+                            <dd>{text:Spec}</dd>
+                            <dt>頒布イベント</dt>
+                            <dd>{text:EventName}</dd>
+                            <dt>頒布日</dt>
+                            <dd>{text:DateYear}/{text:DateMonthAndDay}</dd>
+                            <dt>頒布場所</dt>
+                            <dd>{text:Booth}</dd>
+                            <dt>価格</dt>
+                            <dd>{text:Price}</dd>
+                        </dl>
+
+                        {block:IfCoverImage}
+                        <section class="cover">
+                            <h1 role="heading" class="subheader">表紙</h1>
+                            <img alt="表紙" src="{image:Cover}">
+                        </section>
+                        {/block:IfCoverImage}
+                    </section>
+
+                    <!-- 頒布物のもくじ: ここは気合で書く -->
+                    <section class="columns large-6">
+                        <h1 role="heading" class="subheader">もくじ</h1>
+                        <ol class="toc">
+                            <li>
+                                はじめに
+                                <ol class="toc">
+                                    <li>謝辞</li>
+                                    <li>本書の構成</li>
+                                </ol>
+                            </li>
+                            <li>
+                                第一章 - バージョン管理とはなにか
+                                <ol class="toc">
+                                    <li>1.1. もっとも手軽なバージョン管理</li>
+                                    <li>1.2. 分散型バージョン管理システム「Git」について</li>
+                                </ol>
+                            </li>
+                            <li>
+                                第二章 - なぜGitを使うのか
+                                <ol class="toc">
+                                    <li>2.1. ネットワーク接続がいらない</li>
+                                    <li>2.2. 流行っている</li>
+                                    <li>2.3. ローカルリポジトリでいろいろと試せる</li>
+                                </ol>
+                            </li>
+                            <li>
+                                第三章 - Gitの使いかた
+                                <ol class="toc">
+                                    <li>3.1. SourceTreeのインストールと設定</li>
+                                    <li>3.2. Gitによるバージョン管理を始める</li>
+                                    <li>3.3. すでにあるリモートリポジトリを使ってバージョン管理を始める</li>
+                                    <li>3.4. 作業内容を記録する</li>
+                                    <li>3.5. 作業内容を無かったことにする</li>
+                                    <li>3.6. ブランチの一覧を見たり、ブランチを作ったりする</li>
+                                    <li>3.7. ブランチを切りかえる</li>
+                                    <li>3.8. 変更をリセットする</li>
+                                    <li>3.9. 作業履歴を改変する</li>
+                                    <li>3.10. リモートリポジトリに作業内容を送る</li>
+                                    <li>3.11. リモートリポジトリの変更内容を自分のPC上のリポジトリに取り込む</li>
+                                    <li>3.12. 別のブランチでの作業内容を取り込む</li>
+                                </ol>
+                            </li>
+                            <li>
+                                あとがき
+                                <ol class="toc">
+                                    <li>GitHubとBitbucketについて</li>
+                                    <li>GitHubとBitbucket共通の仕組み</li>
+                                    <li>参考にした資料</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </section>
+                </div>
+
+                <!-- 面白かったらシェア！…なんて言いませんよ？ -->
+                <!-- 面白かったらシェア！…なんて言いませんよ？ -->
+                <ul class="social">
+                    {block:IfEnableTweetButton}
+                    <li class="social__tweet">
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="{BlogURL}">Tweet</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                    </li>
+                    {/block:IfEnableTweetButton}
+                    {block:IfEnableFacebookButton}
+                    <li class="social__fb-like">
+                        <div class="fb-like" data-url="{BlogURL}" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false"></div>
+                    </li>
+                    {/block:IfEnableFacebookButton}
+                </ul>
+            </div>
+        </div>
+    </div>
 </main>
 
 <footer role="contentinfo">
     <!-- 著作権表示といいつつCopyrightという文字は使わない方向性 -->
     <p class="copyright">
-        <small>{text:DateYear} {Title} by {text:CircleName}</small>
+        <small><img alt="{text:CircleName}" src="{text:CopyrightImgPath}"></small>
     </p>
 </footer>
 </body>
