@@ -43,12 +43,12 @@ main .container {
       content: ""; }
     .main-visual:before {
       left: 0;
-      background: -webkit-gradient(linear, 100% 0, 0 0, from(transparent), to(white));
-      background: linear-gradient(to left, transparent, white 100%); }
+      background: -webkit-gradient(linear, 100% 0, 0 0, from(rgba(255, 255, 255, 0)), to(white));
+      background: linear-gradient(to left, rgba(255, 255, 255, 0), white 100%); }
     .main-visual:after {
       right: 0;
-      background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), to(white));
-      background: linear-gradient(to right, transparent, white 100%); } }
+      background: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(255, 255, 255, 0)), to(white));
+      background: linear-gradient(to right, rgba(255, 255, 255, 0), white 100%); } }
   .main-visual canvas {
     position: absolute;
     top: 0;
