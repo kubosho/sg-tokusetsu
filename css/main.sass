@@ -1,0 +1,196 @@
+//////////////////////////////////////////////////
+
+$font-size-small : 0.825rem
+$font-size-base  : 1.025rem
+$font-size-medium: 1.625rem
+$font-size-large : 2.225rem
+
+$site-width: 62.5em
+
+$space-small : 20px
+$space-medium: 40px
+$space-large : 80px
+
+//////////////////////////////////////////////////
+
+body
+  background: #fff
+  font-family: "Lucida Grande", Geneva, Verdana, "Hiragino Kaku Gothic ProN", Meiryo, "Droid Sans", sans-serif
+
+//////////////////////////////////////////////////
+
+a
+  color: #eee
+  text-decoration: underline
+
+  &:hover,
+  &:focus
+    color: #eee
+
+//////////////////////////////////////////////////
+
+[role="banner"]
+  padding: $space-small 0
+  text-align: center
+
+  h1
+    img
+      width: (387px / 1.5)
+
+  @media only screen and (min-width: 40.063em)
+    h1
+      img
+        width: 387px
+
+//////////////////////////////////////////////////
+
+[role="heading"]
+  color: #fff
+
+//////////////////////////////////////////////////
+
+main
+  .container
+    margin-top: -800px
+    background: -webkit-gradient(linear, 100% 0, 0 0, from(rgba(0, 0, 0, 0)),to(#fff))
+    background: linear-gradient(to bottom, rgba(57, 57, 57, 0.5), #111111 100%)
+    color: #fff
+
+//////////////////////////////////////////////////
+
+.main-visual
+  position: relative
+  overflow: hidden
+  max-width: 672px
+  height: 800px
+  margin: 0 auto
+
+  &:before,
+  &:after
+    display: block
+    position: absolute
+    top: 0
+    z-index: -1
+    width: 80px
+    height: 100%
+    content: ""
+
+  &:before
+    left: 0
+    background: -webkit-gradient(linear, 100% 0, 0 0, from(rgba(0,0,0,0)),to(#fff))
+    background: linear-gradient(to left, rgba(0,0,0,0), #fff 100%)
+
+  &:after
+    right: 0
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0,0,0,0)),to(#fff))
+    background: linear-gradient(to right, rgba(0,0,0,0), #fff 100%)
+
+  canvas
+    position: absolute
+    top: 0
+    left: 0
+    z-index: -4
+    width: 386px
+  @media only screen and (min-width: 40.063em)
+    canvas
+      width: 672px
+
+  .main-visual-01
+    z-index: -4
+
+  .main-visual-02
+    z-index: -3
+
+  .main-visual-03
+    z-index: -2
+
+//////////////////////////////////////////////////
+
+.tagline,
+.introduction,
+section
+  max-width: $site-width
+  margin: 0 auto
+
+.tagline
+  padding: $space-large 0 $space-small
+  font-weight: bold
+  text-align: center
+
+.introduction
+  text-align: center
+
+  &:last-child
+    margin-bottom: $space-large
+
+//////////////////////////////////////////////////
+
+.subheader
+  margin: 0 0 $space-small
+  line-height: 1
+
+//////////////////////////////////////////////////
+
+.details
+  margin-bottom: 0.9375em * 2
+
+  dt
+    float: left
+
+  dd
+    margin-bottom: 10px
+    border-bottom: 1px dotted #fff
+    text-align: right
+
+//////////////////////////////////////////////////
+
+.cover
+  margin-bottom: 0.9375em * 2
+
+//////////////////////////////////////////////////
+
+.toc
+  list-style: none
+  margin-top: -5px
+  margin-left: 0
+
+  > li
+    padding: 5px 0
+    border-bottom: 1px dotted #fff
+
+    &:last-child
+      border-bottom: 0
+
+  .toc
+    margin-top: 0
+    margin-left: 1.4rem
+
+    > li
+      padding: 0
+      border-bottom: 0
+
+//////////////////////////////////////////////////
+
+.social
+  list-style: none
+  border: dotted #fff
+  border-width: 1px 0
+  margin: $space-medium 0
+  padding: $space-small 0
+  text-align: center
+
+  li
+    display: inline-block
+
+//////////////////////////////////////////////////
+
+.copyright
+  padding: $space-small 0 0
+  text-align: center
+
+  img
+    width: (223px / 1.5)
+
+  @media only screen and (min-width: 40.063em)
+    img
+      width: 223px
