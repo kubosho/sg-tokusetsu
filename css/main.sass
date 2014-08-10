@@ -65,25 +65,26 @@ main
   height: 800px
   margin: 0 auto
 
-  &:before,
-  &:after
-    display: block
-    position: absolute
-    top: 0
-    z-index: -1
-    width: 80px
-    height: 100%
-    content: ""
+  @media only screen and (min-width: 40.063em)
+    &:before,
+    &:after
+      display: block
+      position: absolute
+      top: 0
+      z-index: -1
+      width: 80px
+      height: 100%
+      content: ""
 
-  &:before
-    left: 0
-    background: -webkit-gradient(linear, 100% 0, 0 0, from(rgba(0,0,0,0)),to(#fff))
-    background: linear-gradient(to left, rgba(0,0,0,0), #fff 100%)
+    &:before
+      left: 0
+      background: -webkit-gradient(linear, 100% 0, 0 0, from(rgba(0,0,0,0)),to(#fff))
+      background: linear-gradient(to left, rgba(0,0,0,0), #fff 100%)
 
-  &:after
-    right: 0
-    background: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0,0,0,0)),to(#fff))
-    background: linear-gradient(to right, rgba(0,0,0,0), #fff 100%)
+    &:after
+      right: 0
+      background: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0,0,0,0)),to(#fff))
+      background: linear-gradient(to right, rgba(0,0,0,0), #fff 100%)
 
   canvas
     position: absolute
@@ -106,11 +107,13 @@ main
 
 //////////////////////////////////////////////////
 
-.tagline,
-.introduction,
+.promo-word
 section
   max-width: $site-width
   margin: 0 auto
+
+.promo-word
+  margin-bottom: $space-medium
 
 .tagline
   padding: $space-large 0 $space-small
@@ -120,8 +123,17 @@ section
 .introduction
   text-align: center
 
-  &:last-child
-    margin-bottom: $space-large
+.booth
+  overflow: hidden
+  margin-bottom: $space-large
+
+  dt
+    float: left
+
+  dd
+    margin-bottom: 10px
+    border-bottom: 1px dotted #fff
+    text-align: right
 
 //////////////////////////////////////////////////
 
@@ -185,7 +197,8 @@ section
 //////////////////////////////////////////////////
 
 .copyright
-  padding: $space-small 0 0
+  margin: 0
+  padding: $space-small 0
   text-align: center
 
   img

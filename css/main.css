@@ -32,22 +32,23 @@ main .container {
   max-width: 672px;
   height: 800px;
   margin: 0 auto; }
-  .main-visual:before, .main-visual:after {
-    display: block;
-    position: absolute;
-    top: 0;
-    z-index: -1;
-    width: 80px;
-    height: 100%;
-    content: ""; }
-  .main-visual:before {
-    left: 0;
-    background: -webkit-gradient(linear, 100% 0, 0 0, from(transparent), to(white));
-    background: linear-gradient(to left, transparent, white 100%); }
-  .main-visual:after {
-    right: 0;
-    background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), to(white));
-    background: linear-gradient(to right, transparent, white 100%); }
+  @media only screen and (min-width: 40.063em) {
+    .main-visual:before, .main-visual:after {
+      display: block;
+      position: absolute;
+      top: 0;
+      z-index: -1;
+      width: 80px;
+      height: 100%;
+      content: ""; }
+    .main-visual:before {
+      left: 0;
+      background: -webkit-gradient(linear, 100% 0, 0 0, from(transparent), to(white));
+      background: linear-gradient(to left, transparent, white 100%); }
+    .main-visual:after {
+      right: 0;
+      background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), to(white));
+      background: linear-gradient(to right, transparent, white 100%); } }
   .main-visual canvas {
     position: absolute;
     top: 0;
@@ -64,11 +65,12 @@ main .container {
   .main-visual .main-visual-03 {
     z-index: -2; }
 
-.tagline,
-.introduction,
 section {
   max-width: 62.5em;
   margin: 0 auto; }
+
+.promo-word {
+  margin-bottom: 40px; }
 
 .tagline {
   padding: 80px 0 20px;
@@ -77,8 +79,16 @@ section {
 
 .introduction {
   text-align: center; }
-  .introduction:last-child {
-    margin-bottom: 80px; }
+
+.booth {
+  overflow: hidden;
+  margin-bottom: 80px; }
+  .booth dt {
+    float: left; }
+  .booth dd {
+    margin-bottom: 10px;
+    border-bottom: 1px dotted white;
+    text-align: right; }
 
 .subheader {
   margin: 0 0 20px;
@@ -123,7 +133,8 @@ section {
     display: inline-block; }
 
 .copyright {
-  padding: 20px 0 0;
+  margin: 0;
+  padding: 20px 0;
   text-align: center; }
   .copyright img {
     width: 148.66667px; }
