@@ -82,16 +82,15 @@ section {
 
 .booth {
   margin-bottom: 80px;
+  padding: 20px 0;
   border: dotted white;
   border-width: 1px 0;
   font-size: 1.625rem;
   text-align: center; }
-  .booth dt {
-    display: inline-block; }
+  .booth dt,
   .booth dd {
     display: inline-block;
-    margin-bottom: 0;
-    padding: 20px 0; }
+    margin-bottom: 0; }
 
 .subheader {
   margin: 0 0 20px;
